@@ -2,7 +2,6 @@ package crud
 
 import (
 	"net/http"
-	"pari/internal/domain"
 
 	"github.com/gin-gonic/gin"
 )
@@ -30,9 +29,9 @@ func (cc CrudController) GetAll(c *gin.Context) {
 func (cc CrudController) GetById(c *gin.Context) {
 	ctx := c.Request.Context()
 
-	id := c.GetUint("id")
+	id := c.Query("id")
 
-	result, err := cc.crudUsecase.GetById(ctx, domain.RequestGet{Id: id})
+	result, err := cc.crudUsecase.GetById(ctx, id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status":  "Fail",

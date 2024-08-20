@@ -5,12 +5,11 @@ import (
 	"pari/internal/domain"
 
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
 func (cc CrudController) Put(c *gin.Context) {
 
-	id := c.GetUint("id")
+	id := c.Query("id")
 
 	var updatedItem domain.Items
 
@@ -24,7 +23,7 @@ func (cc CrudController) Put(c *gin.Context) {
 	}
 
 	ctx := c.Request.Context()
-	err := cc.crudUsecase.PutItem(ctx, domain.Items{Model: gorm.Model{ID: id}, Detail: updatedItem.Detail})
+	err := cc.crudUsecase.PutItem(ctx, id, updatedItem)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"status":  "Fail",

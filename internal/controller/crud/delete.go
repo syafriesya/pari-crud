@@ -2,16 +2,15 @@ package crud
 
 import (
 	"net/http"
-	"pari/internal/domain"
 
 	"github.com/gin-gonic/gin"
 )
 
 func (cc CrudController) Delete(c *gin.Context) {
-	id := c.GetUint("id")
+	id := c.Query("id")
 
 	ctx := c.Request.Context()
-	if err := cc.crudUsecase.DeleteItem(ctx, domain.RequestGet{Id: id}); err != nil {
+	if err := cc.crudUsecase.DeleteItem(ctx, id); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"status":  "Fail",
 			"message": "Failed to delete item",

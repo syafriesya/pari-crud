@@ -5,7 +5,7 @@ import (
 	"pari/pkg/inits"
 )
 
-func main() {
+func Main() {
 
 	cfg := inits.InitializeConfig()
 
@@ -18,4 +18,6 @@ func main() {
 	InitializeRepositories(db)
 	InitializeUsecases(cfg)
 	InitializeControllers(router, cfg)
+
+	startServer(router, cfg.Env.Server.Port)
 }

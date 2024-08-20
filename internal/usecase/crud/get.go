@@ -16,9 +16,9 @@ func (u CrudUsecase) GetAll(ctx context.Context) ([]domain.Items, error) {
 
 }
 
-func (u CrudUsecase) GetById(ctx context.Context, request domain.RequestGet) (domain.Items, error) {
+func (u CrudUsecase) GetById(ctx context.Context, id string) (domain.Items, error) {
 
-	result, err := u.crudRepo.GetById(ctx, domain.RequestGet{Id: request.Id})
+	result, err := u.crudRepo.GetById(ctx, id)
 	if err != nil {
 		return domain.Items{}, err
 	}

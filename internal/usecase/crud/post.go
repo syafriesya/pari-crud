@@ -6,7 +6,7 @@ import (
 	"pari/internal/domain"
 )
 
-func (uc *CrudUsecase) PostItem(ctx context.Context, newItem domain.Items) error {
+func (uc CrudUsecase) PostItem(ctx context.Context, newItem domain.Items) error {
 	if newItem.Detail == "" {
 		return errors.New("item detail cannot be empty")
 	}

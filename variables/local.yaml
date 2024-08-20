@@ -2,7 +2,7 @@ env:
   TZ: "Asia/Jakarta"
   ENV: "dev"
   server:
-    SERVER_PORT: "8000"
+    SERVER_PORT: "7777"
     SERVER_NAME: "pari"
   log:
     LOG_DIRECTORY: "var/log/filebeat"
@@ -12,3 +12,4 @@ env:
     DB_USER: "postgres"
     DB_NAME: "pari"
     DB_PASSWORD: "katasandi12"
+    DB_SCHEMA: "public"
